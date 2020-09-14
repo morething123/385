@@ -1,0 +1,332 @@
+.lian{
+  background: #F8F9FA;
+}
+.header_img{
+  width: 100%;
+  img{
+    width: 100%;
+    object-fit: cover;
+  }
+}
+//主体部分
+.news_body {
+  margin: 2rem 0 1rem;
+
+  .news_stree {
+    width: 63%;
+    margin: auto;
+    padding: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+
+    .daohang{
+      width: 63%;
+      margin: auto;
+      a{
+        color: #666666;
+        font-size: 1.17rem;
+        text-decoration: none;
+      }
+      span{
+        font-size:1.17rem;
+        color:#0691CA;
+      }
+    }
+
+    .sousuo {
+      width: 40%;
+      position: relative;
+      input {
+        width: 35rem;
+        height: 4.17rem;
+        border: 1px solid rgba(217, 217, 217, 1);
+        font-size: 1.17rem;
+        font-weight: 400;
+        outline: none;
+        opacity: 0.4;
+        padding: 0 1rem;
+        border-radius: 5px;
+
+      }
+      .input_img{
+        display: inline-block;
+        top: 1.5rem;
+        position: absolute;
+        right: -20rem;
+      }
+    }
+  }
+}
+//公司地址
+.us_body{
+  width: 63%;
+  margin:2rem auto;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+   .body_one{
+     text-align: center;
+     width: 20%;
+     height: 17.33rem;
+     background: #fff;
+     box-shadow: 0 0 1rem 0 rgba(0,0,0,.06);
+     border-radius: 1rem;
+     padding: 4rem 2rem;
+      img{
+
+      }
+     h4{
+       height:1.42rem;
+       font-size:1.5rem;
+       font-weight:400;
+       color:rgba(51,51,51,1);
+       line-height:2.5rem;
+     }
+     p{
+       margin: auto;
+       //height:3.67rem;
+       font-size:1.17rem;
+       font-weight:400;
+       color:rgba(153,153,153,1);
+       line-height:2.5rem;
+     }
+     a{
+       text-decoration: none;
+     }
+   }
+}
+//我们的地址
+//three主体
+.three_both {
+  width: 100%;
+  margin: auto;
+  position: relative;
+
+  .top_left {
+    width: 80%;
+    margin: 5rem auto;
+    text-align: center;
+
+    h4 {
+      font-size: 2.5rem;
+      font-weight: 400;
+      color: rgba(51, 51, 51, 1);
+      margin: 0;
+      line-height: 2;
+    }
+
+    .xian {
+      width: 6.68rem;
+      height: 0.33rem;
+      background: rgba(6, 145, 202, 1);
+      border-radius: 5px;
+      display: inline-block;
+    }
+
+    p {
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: rgba(153, 153, 153, 1)
+    }
+  }
+  .map{
+    width: 100%;
+    height: 100%;
+     .map_tress{
+       position: relative;
+       #map_ding{
+         width:100%;
+         height: 538px;
+       }
+     }
+     .map_zhe{
+       width:100%;
+       height:11.67rem;
+       background:rgba(6,145,202,1);
+       opacity:0.8;
+       position: absolute;
+       bottom: 0;
+       text-decoration: none;
+        .zhe_body{
+          display: flex;
+          justify-content: space-between;
+          margin: auto;
+          width: 70%;
+          height: 11.67rem;
+           .zhe_text{
+             width: 60%;
+             height: 100%;
+             text-decoration: none;
+              h4{
+                height:0.5rem;
+                font-size:2.5rem;
+                font-weight:400;
+                color:rgba(255,255,255,1);
+              }
+              p{
+                height:1.08rem;
+                font-size:1.17rem;
+                font-weight:400;
+                color:rgba(255,255,255,1);
+              }
+           }
+           .zhe_map{
+             text-align: center;
+             margin: auto;
+             width: 16rem;
+             border: 1px solid white;
+             text-decoration: none;
+             border-radius: 5px;
+             height: 4rem;
+             .map_bao{
+               display: flex;
+               justify-content: space-between;
+               height: 4rem;
+               width: 60%;
+               margin: auto;
+               img{
+                 z-index: 11;
+                 height: 2rem;
+                 width: 2rem;
+                 margin: auto 0;
+               }
+               span{
+                 height:1.42rem;
+                 font-size:1.5rem;
+                 font-weight:400;
+                 color:rgba(255,255,255,1);
+                 margin: auto 0;
+               }
+             }
+           }
+        }
+     }
+  }
+}
+.phone_footer,.phone_header,.phone_footer,.ph_img{
+  display: none;
+}
+.bcx{
+  width:100%;
+  height:0.08rem;
+  background:rgba(249,249,249,1);
+  margin-bottom: 4rem;
+}
+@media (max-width: 641px) {
+  .phone_footer,.phone_header,.ph_img{
+    display: block;
+  }
+  .news_body .news_stree form .sousuo,.header_img{
+    display: none !important;
+  }
+  #header,.footer,.news_body>.news_stree>.news_body .news_stree form .sousuo,.three_body,.bcx{
+    display: none;
+  }
+  .ph_img{
+    width: 100%;
+    height: 21rem;
+    img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  .news_body{
+    width:100% !important;
+    .news_stree{
+      width: 90% !important;
+      .daohang{
+        width: 100%;
+      }
+    }
+  }
+  .us_body{
+    width: 90%;
+     .body_one{
+       width:48%;
+       height:13.93rem;
+       background:rgba(255,255,255,1);
+       box-shadow:0rem 0rem 1rem 0rem rgba(0, 0, 0, 0.06);
+       border-radius:0rem;
+       padding: 2rem 0 0;
+       margin-bottom: 2rem;
+       img{
+
+       }
+       h4{
+         height:1.17rem;
+         font-size:1.25rem;
+         font-weight:400;
+         color:rgba(51,51,51,1);
+         line-height:1.49rem;
+       }
+       p{
+         height:2.46rem;
+         font-size:1rem;
+         font-weight:400;
+         color:rgba(153,153,153,1);
+         line-height:1.49rem;
+       }
+     }
+  }
+  .three_both{
+    width:100%;
+    margin-bottom: 4.7rem;
+    .top_left{
+      margin: 1rem auto;
+      h4{
+        font-size:1.5rem;
+        font-weight:400;
+        color:rgba(51,51,51,1);
+      }
+      .xian{
+        width:3.34rem;
+        height:0.17rem;
+        background:rgba(6,145,202,1);
+        border-radius:5px;
+      }
+      p{
+        height:0.79rem;
+        font-size:1rem;
+        font-weight:400;
+        color:rgba(153,153,153,1);
+      }
+    }
+    .map{
+      .map_tress{
+        #map_ding{
+          height: 32rem !important;
+        }
+      }
+      .map_zhe{
+        height:5.83rem;
+        background:rgba(6,145,202,1);
+        opacity:0.8;
+        text-decoration: none;
+        .zhe_body{
+          width: 100%;
+          height: 100% !important;
+          .zhe_text{
+            width: 100%;
+            text-align: center;
+            h4{
+              height:0.6rem;
+              font-size:1.25rem;
+              font-weight:400;
+              color:rgba(255,255,255,1);
+            }
+            p{
+              height:0.54rem;
+              font-size:0.58rem;
+              font-weight:400;
+              color:rgba(255,255,255,1);
+            }
+          }
+          .zhe_map{
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,115 @@
+[#escape x as (x)!?html]
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+    <head>
+        [#include 'head-template.html'/]
+        <script type="text/javascript" src="${ctx}/static/vendor/My97DatePicker/cn_WdatePicker.js"></script>
+        <link href="_files/global.css" rel="stylesheet"/>
+        <link rel="stylesheet" href="_files/css/linkUs.min.css">
+        <link rel="stylesheet" href="_files/css/ssym.min.css">
+        <link rel="stylesheet" href="${ctx}/static/css/search.css">
+    </head>
+    <style>
+
+    </style>
+    <body>
+    <div id="header">
+        [#include 'header.html'/]
+    </div>
+    <!--手机头部-->
+    <div class="phone_header">
+        [#include 'phone_header.html'/]
+    </div>
+        <div class="w center mt10 oh">
+            <div class="left">
+                <form action="${ctx}/search" method="get" class="s-form">
+
+                    <div class="sf-param">
+                        <span>关键词位置：
+                            <select name="part" onchange="if($(this).val()==''){$('#q').attr('name','q');}else{$('#q').attr('name',$(this).val());}">
+                                <option value="">所有位置</option>
+                                <option value="title"[#if Param.part! == 'title'] selected="selected"[/#if]>仅标题</option>
+                                <option value="keyword"[#if Param.part! == 'keyword'] selected="selected"[/#if]>仅关键词</option>
+                                <option value="description"[#if Param.part! == 'description'] selected="selected"[/#if]>仅描述</option>
+                                <option value="text"[#if Param.part! == 'text'] selected="selected"[/#if]>仅正文</option>
+                            </select>
+                        </span>
+                        <span class="ml10">栏目：<select name="nodeId">
+                            [@NodeList isIncludeChildren='true' siteId='275';list]
+                                <option value="711,713">所有栏目</option>
+                                [#list list as node]
+                                [#if node_index != 0  && !node.linked && node.realNode]
+                                <option value="${node.id}" [#if node.id?string== Param.nodeId!] selected="selected" [/#if]>[#if node.treeLevel gt 1][#list 2..node.treeLevel as i]--[/#list][/#if]${node.name}</option>
+                            [/#if]
+                                [/#list]
+                            [/@NodeList]
+                            </select>
+                        </span>
+                        <span class="ml10">时间：<input type="text" name="beginDate" value="${Param.beginDate}"
+                                                     onclick="WdatePicker({dateFmt:'yyyy-MM-dd'});"
+                                                     style="width:80px;"/> 至 <input type="text" name="endDate"
+                                                                                    value="${Param.endDate}"
+                                                                                    onclick="WdatePicker({dateFmt:'yyyy-MM-dd'});"
+                                                                                    style="width:80px;"/></span>
+                        <span class="ml10">排序：<select name="sort">
+                                <option value="">按相关度</option>
+                                <option value="publishDate long desc" [#if Param.sort! == 'publishDate long desc'] selected="selected"[/#if]>按发布时间倒序</option>
+                            <option value="publishDate long asc" [#if Param.sort! == 'publishDate long asc'] selected="selected"[/#if]>按发布时间升序</option>
+                            </select>
+                        </span>
+                        <div class="right">
+                            <input type="text" id="q"
+                                   name="[#if Param.part! =='title' || Param.part! =='keyword' || Param.part! =='description' || Param.part! =='text']${Param.part}[#else]q[/#if]"
+                                   value="[#if Param.part! =='title' || Param.part! =='keyword' || Param.part! =='description' || Param.part! =='text']${Param[Param.part]}[#else]${Param.q}[/#if]"
+                                   class="left search-input" autocomplete="off"/>
+                            <button type="submit" class="pc_button"></button>
+                            <a class="phone_botton">搜索</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        [@InfoFulltextPage q=Param.q title=Param.title keyword=Param.keyword description=Param.description text=Param.text
+        nodeId=Param.nodeId beginDate=Param.beginDate endDate=Param.endDate sort=Param.sort pageSize=10;pagedList]
+        <div class="w center mt10">
+            <div class="c-666">为您找到相关结果 ${pagedList.totalElements} 篇</div>
+            [#if pagedList.totalElements > 0]
+            <ul class="list-unstyled s-result">
+                [#list pagedList.content as info]
+                <li>
+                    <h3 class="sr-title"><a href="${info.url}" target="_blank" class="sa">[#noescape]${info.highlightTitle}[/#noescape]</a>
+                    </h3>
+                    <div class="sr-desc">[#noescape]${info.highlightText}[/#noescape]</div>
+                    <div class="sr-footer">
+                        <span style="color:#008000;">${info.publishDate?string('yyyy-MM-dd HH:mm')}</span> &nbsp;
+                        <span>[#list info.node.hierarchy as n]<a href="${n.url}" class="a-hover">${n.name}</a>[#if n_has_next]>[/#if][/#list]</span>
+                        &nbsp;
+                        <span>点击：${info.bufferViews}</span> &nbsp;
+                        <span>评论：${info.bufferComments}</span>
+                    </div>
+                </li>
+                [/#list]
+            </ul>
+            <div class="mt20">
+                [#include 'page.html'/]
+            </div>
+            [/#if]
+        </div>
+        [/@InfoFulltextPage]
+
+
+        <!-- 底部区域 -->
+    <!--pc_底部-->
+    <div class="footer">
+        [#include 'footer.html'/]
+    </div>
+    <!--phone_底部-->
+    <div class="phone_footer">
+        [#include 'nav_footer.html'/]
+    </div>
+    </body>
+
+</html>
+[/#escape]

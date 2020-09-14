@@ -1,0 +1,37 @@
+[#escape x as (x)!?html]
+<div>
+    <div class="box3">
+        <div class="head b c-node fs14">热点新闻</div>
+    </div>
+    <ul class="list-unstyled">
+        [@InfoList node ='news' sort='views desc' limit='10';list]
+        [#list list as info]
+        <li>
+            <span class="left text-center [#if info_index<3]rank-top[#else]rank-normal[/#if]" style="margin-right:10px;">•</span>
+            <a class="a fs14" href="${info.url}" target="_blank" title="${info.title}">${substring(info.title,14,'...')}</a>
+        </li>
+        [/#list]
+        [/@InfoList]
+    </ul>
+</div>
+
+<div>
+    <div class="box3">
+        <div class="head b c-node fs14">核心业务</div>
+    </div>
+    [@NodeList parent='serve' limit='3';list]
+
+    <ul class="list-unstyled">
+        [#list list as item]
+        <li>
+            <span class="left text-center [#if item_index<3]rank-top[#else]rank-normal[/#if]" style="margin-right:10px;">•</span>
+            <a class="a fs14" href="${item.url}" target="_blank" title="${info.title}">${item.name}</a>
+        </li>
+        [/#list]
+    </ul>
+    [/@NodeList]
+
+
+
+</div>
+[/#escape]

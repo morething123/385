@@ -1,0 +1,350 @@
+[#escape x as (x)!?html]
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    [#include 'head-template.html'/]
+    <link rel="stylesheet" href="_files/css/list.css">
+    <script src="_files/js/swiper.min.js"></script>
+    <script src="_files/js/jquery.number.js"></script>
+    <script src="_files/js/swiper.animate.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.css">
+    <link rel="stylesheet" href="_files/css/tpqh.css">
+    <script src="https://unpkg.com/swiper/js/swiper.js"> </script>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=3.0&ak=l1ZQiVf88GQMmqMoUT2gttonI5oKnpEC"></script>
+    <script type="text/javascript" src="_files/js/modernizr-custom-v2.7.1.min.js"></script>
+    <script type="text/javascript" src="_files/js/jquery.min.js"></script>
+</head>
+<body>
+<div id="header">
+    [#include 'header.html'/]
+</div>
+<!--手机头部-->
+<div class="phone_header">
+    [#include 'phone_header.html'/]
+</div>
+<!--主体部分-->
+<div class="header_img">
+    <img src="_files/img/bothbanner.png" alt="">
+</div>
+<div class="ph_img" >
+    <img src="_files/img/bannerl4.png" alt="">
+</div>
+<!--地址-->
+<div class="news_body">
+    <div class="news_stree">
+        <a href="${site.url}">首页></a>
+        [@Node number='anli';bean]
+        <a href="${site.url}">产品案例></a>
+        [/@Node]
+        <span>${info.title}</span>
+    </div>
+</div>
+<!--产品中心-->
+<div class="news_list">
+    <div class="list_top">
+        <div class="body_img">
+            <!--                <img src="${info.smallImage}" alt="">-->
+            <div class="Xcontent">
+                <ul class="Xcontent01">
+
+                    <div class="Xcontent06">
+                        <img src="${info.smallImage}">
+                    </div>
+                    <ol class="Xcontent08">
+                        [#list info.images as img]
+                        <div class="Xcontent07">
+                            <img src="${img.image}" alt="${info.title}" class="am-img-responsive">
+                        </div>
+                        [/#list]
+                    </ol>
+                </ul>
+            </div>
+        </div>
+        <div class="body_text">
+            <h4>${info.title}</h4>
+            <p>[#noescape]${info.clobs['productThing']}[/#noescape]</p>
+            <div class="text_button">
+                <button onclick="show()">在线询盘</button>
+                <div class="text_phone">
+                    <div class="bdsharebuttonbox fenxiang" data-tag="share_1">
+                        <a class="bds_tsina" data-cmd="tsina"></a>
+                        <a href="#" class="slide-weixin" data-cmd="weixin"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="top_xian"></div>
+    <div class="thingx">
+        <button>详情</button>
+    </div>
+    <div class="xiangqing">
+        <!--4-->
+        <div class="xiangqing_first" id="wrap">
+            <div>
+                <p>[#noescape]${info.text}[/#noescape]</p>
+            </div>
+            <!--绑定点击事件onShow，点击展开全文-->
+            <div id="gradient"></div>
+        </div>
+        <div id="read-more"></div>
+    </div>
+</div>
+<div class="lbOverlay" onclick="closeDiv()"></div>
+<div class="hidden_pro_au">
+    <div class="nei_kuang">
+        <h4>PPE打包带</h4>
+
+        <form id="guestbookForm_pc" action="${ctx}/guestbook2/create2" method="post" class="pc_form">
+            <input type="hidden" name="status_0" value="留言成功！"/>
+            <input type="hidden" name="status_1" value="留言成功，请等待管理员审核！"/>
+            <input type="hidden" name="siteNumber" value="jxkj"/>
+            <input type="hidden" name="typeId" value="335"/>
+            <input type="hidden" name="nextUrl" value="${ctx}/"/>
+            <div class="pc_first">
+                <div class="nei_name">
+                    <div class="input_name">
+                        <input type="text" id="name" name="username" placeholder="姓名">
+                    </div>
+                    <div class="input_name">
+                        <input type="text" id="phone" name="phone" placeholder="电话">
+                    </div>
+                </div>
+                <p><textarea id="text" name="text" cols="50" rows="5" placeholder="产品需求："></textarea></p>
+                <button id="checkPhone" onClick='javascript:return checkPhone(0);'>发送</button>
+            </div>
+        </form>
+    </div>
+</div>
+<!--上一条下一条提示-->
+<div class="title_ti">
+    <ul class="mt20 list-unstyled fs14 " style="line-height:28px;">
+        [@InfoPrev id=info.id;bean]
+        [#if bean??]
+        <li class="title_top"><span class="b c-000">上一条：</span> <a href="${bean.url}" class="a" style="text-decoration: none;">${bean.title!}</a></li>
+        [#else]
+        <li class="title_top"><span class="b c-000">上一条：</span> <span>这已经是最新一条了</span></li>
+        [/#if]
+        [/@InfoPrev]
+        [@InfoNext id=info.id;i]
+        [#if i??]
+        <li class="title_top"><span class="b c-000">下一条：</span> <a href="${i.url}" class="a" style="text-decoration: none;color: #000;font-size: 0.88rem">${i.title!}</a></li>
+        [#else]
+        <li class="title_top"><span class="b c-000">下一条：</span> <span>这已经是最后一条了</span></li>
+        [/#if]
+        [/@InfoNext ]
+    </ul>
+</div>
+<!--产品中心-->
+<div class="three_both">
+    <div class="top_left">
+        <h4>新闻中心</h4>
+        <div class="xian"></div>
+        <p>NEWS CENTER</p>
+    </div>
+<!--pc端-->
+    <div class="three_body">
+        <div class="nei-container">
+            <div class="swiper-wrapper">
+                [@InfoList node='news' isIncludeChildren='true';list]
+                [#list list as info]
+                <a href="${info.url}" class="swiper-slide list_one">
+                    <div class="list_img">
+                        <div class="img_first">
+                            <img src="${info.smallImage}" alt="">
+                        </div>
+                        <div class="list_text">
+                            <h4>${info.title}</h4>
+                            <span>[#noescape]${info.text}[/#noescape]</span>
+                            <div class="text_time">
+                                <p>${info.publishDate?string('YYYY/MM/dd')}</p>
+                                <button>查看详情</button>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                [/#list]
+                [/@InfoList]
+            </div>
+        </div>
+        <div class="swiper-button-prev"></div><!--左箭头。如果放置在swiper-container外面
+，需要自定义样式。-->
+        <div class="swiper-button-next"></div><!--右箭头。如果放置在swiper-container外面
+，需要自定义样式。-->
+    </div>
+    <!--phone端-->
+    <div class="phone_list">
+        [@InfoList node='news' isIncludeChildren='true' limit='4' ;list]
+        [#list list as info]
+        <a href="${info.url}" class="swiper-slide list_one">
+            <div class="list_img">
+                <div class="img_first">
+                    <img src="${info.smallImage}" alt="">
+                </div>
+                <div class="list_text">
+                    <h4>${info.title}</h4>
+                    <div class="text_time">
+                        <p>${info.publishDate?string('YYYY/MM/dd')}</p>
+                        <p>查看详情</p>
+                    </div>
+                </div>
+            </div>
+        </a>
+        [/#list]
+        [/@InfoList]
+    </div>
+</div>
+<!--pc_底部-->
+<div class="footer">
+    [#include 'footer.html'/]
+</div>
+<!--phone_底部-->
+<div class="phone_footer">
+    [#include 'nav_footer.html'/]
+</div>
+<link rel="stylesheet" href="_files/js/animate.min.css">
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+<script>
+    window._bd_share_config = {
+        common : {
+            bdPopTitle:'窗口标题',
+            bdText : '发现一个新的网页，快来围观啊~',
+            bdDesc : 'Custom share summary', // 自定义分享摘要
+            bdUrl : 'http://www.yihongshiji.com/',     //自定义分享url地址
+            bdPic : 'images/code.png' //自定义分享图片
+        },
+        share : [{
+            "bdSize" : 16
+        }],
+
+
+
+    }
+    with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+    //图片切换
+    $(document).ready(function(){
+        var $miaobian=$('.Xcontent08>div');
+        var $huantu=$('.Xcontent06>img');
+        var $miaobian1=$('.Xcontent26>div');
+        $miaobian.mousemove(function(){miaobian(this);});
+        $miaobian1.click(function(){miaobian1(this);});
+        function miaobian(thisMb){
+            for(var i=0; i<$miaobian.length; i++){
+                $miaobian[i].style.borderColor = '#dedede';
+            }
+            thisMb.style.borderColor = '#cd2426';
+
+            $huantu[0].src = thisMb.children[0].src;
+        }
+        function miaobian1(thisMb1){
+            for(var i=0; i<$miaobian1.length; i++){
+                $miaobian1[i].style.borderColor = '#dedede';
+            }
+//		thisMb.style.borderColor = '#cd2426';
+            $miaobian.css('border-color','#dedede');
+            thisMb1.style.borderColor = '#cd2426';
+            $huantu[0].src = thisMb1.children[0].src;
+        }
+        $(".Xcontent33").click(function(){
+            var value=parseInt($('.input').val())+1;
+            $('.input').val(value);
+        })
+
+        $(".Xcontent32").click(function(){
+            var num = $(".input").val()
+            if(num>0){
+                $(".input").val(num-1);
+            }
+
+        })
+
+    })
+
+    //轮播图效果
+    var mySwipernei = new Swiper('.nei-container', {
+        slidesPerView: 3,
+        spaceBetween: 30,
+        loop: true,
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        loop: true,
+    });
+    $(function(){
+        var slideHeight = 650; // px
+        var defHeight = $('#wrap').height();
+        if(defHeight >= slideHeight){
+            $('#wrap').css('height' , slideHeight + 'px');
+            $('#read-more').append('<a href="#">点击查看更多内容</a>');
+            $('#read-more a').click(function(){
+                var curHeight = $('#wrap').height();
+                if(curHeight == slideHeight){
+                    $('#wrap').animate({
+                        height: defHeight
+                    }, "normal");
+                    $('#read-more a').html('点击隐藏');
+                    $('#gradient').fadeOut();
+                }else{
+                    $('#wrap').animate({
+                        height: slideHeight
+                    }, "normal");
+                    $('#read-more a').html('点击查看更多内容');
+                    $('#gradient').fadeIn();
+                }
+                return false;
+            });
+        }
+    });
+    $("#checkPhone").click(function () {
+
+        var username=$("#name").val();
+        var email = $("#email").val();
+        var tel=$("#phone").val();
+        if (username == ""){
+            alert("请输入您的姓名，方便联系");
+            return false;
+        }
+        if (tel == ""){
+            alert("请输入您的电话，方便联系");
+            return false;
+        }else if(tel !=""){
+            var meg= /^1[3|5|6|7|8|9][0-9]{9}$/;
+            isok =meg.test(tel);
+            if(!isok){
+                alert("手机格式不正确，请重新输入");
+                return false;
+            }
+        };
+        if(test == ""){
+            alert("请输入您的需求");
+            return false;
+        }
+        return true;
+    })
+    function show(){
+        $(".lbOverlay").css({"height":window.screen.availHeight});
+        $(".lbOverlay").show();
+
+        var st=$(document).scrollTop(); //页面滑动高度
+        var objH=$(".hidden_pro_au").height();//浮动对象的高度
+        var ch=$(window).height();//屏幕的高度
+        var objT=Number(st)+(Number(ch)-Number(objH))/2;   //思路  浮动高度+（（屏幕高度-对象高度））/2
+        $(".hidden_pro_au").css("top",objT);
+
+        var sl=$(document).scrollLeft(); //页面滑动左移宽度
+        var objW=$(".hidden_pro_au").width();//浮动对象的宽度
+        var cw=$(window).width();//屏幕的宽度
+        var objL=Number(sl)+(Number(cw)-Number(objW))/2; //思路  左移浮动宽度+（（屏幕宽度-对象宽度））/2
+        $(".hidden_pro_au").css("left",objL);
+        $(".hidden_pro_au").slideDown("20000");//这里显示方式多种效果
+    }
+    function closeDiv(){
+        $(".lbOverlay").hide();
+        $(".hidden_pro_au").hide();
+    }
+</script>
+</body>
+</html>
+[/#escape]

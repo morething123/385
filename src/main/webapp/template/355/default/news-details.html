@@ -1,0 +1,172 @@
+[#escape x as (x)!?html]
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    [#include 'head-template.html'/]
+    <link rel="stylesheet" href="_files/css/lnews.css">
+    <script src="_files/js/swiper.min.js"></script>
+    <script src="_files/js/swiper.animate.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.css">
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=3.0&ak=l1ZQiVf88GQMmqMoUT2gttonI5oKnpEC"></script>
+</head>
+<body>
+<div id="header">
+    [#include 'header.html'/]
+</div>
+<!--手机头部-->
+<div class="phone_header">
+    [#include 'phone_header.html'/]
+</div>
+<!--主体部分-->
+<div class="header_img">
+    <img src="_files/img/bothbanner.png" alt="">
+</div>
+<div class="ph_img" >
+    <img src="_files/img/bannerl4.png" alt="">
+</div>
+<!--地址-->
+<div class="news_body">
+    <div class="news_stree">
+        <a href="${site.url}">首页></a>
+        [@Node number='news';bean]
+        <a href="${bean.url}">新闻中心></a>
+        [/@Node]
+         <span style="color: #0691CA">${info.title}</span>
+    </div>
+    <!--新闻资讯-->
+    <div class="news_list">
+        <div class="listn">
+            <div class="lnews_header">
+                <h4>${info.title}</h4>
+                <p>${info.publishDate?string('YYYY-MM-dd')}</p>
+                <!--分享-->
+                <div class="fen">
+                    <!--    <span>分享:</span>-->
+                    <div class="bdsharebuttonbox fenxiang" data-tag="share_1">
+                        <a class="bds_tsina" data-cmd="tsina"></a>
+                        <a href="#" class="slide-weixin" data-cmd="weixin"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="lnews_text">
+                <span>[#noescape]${info.text}[/#noescape]</span>
+            </div>
+        </div>
+    </div>
+    <!--上一条下一条提示-->
+    <div class="title_ti">
+        <!--        <div class="title_top">-->
+        <!--            <span>上一条：</span>-->
+        <!--            <span>${info.title}</span>-->
+        <!--        </div>-->
+        <!--        <div class="title_top">-->
+        <!--            <span>下一条：</span>-->
+        <!--            <span>${info.title}</span>-->
+        <!--        </div>-->
+        <ul class="mt20 list-unstyled fs14 " style="line-height:28px;">
+            [@InfoPrev id=info.id;bean]
+            [#if bean??]
+            <li class="title_top"><span class="b c-000">上一条：</span> <a href="${bean.url}" class="a" style="text-decoration: none;">${bean.title!}</a></li>
+            [#else]
+            <li class="title_top"><span class="b c-000">上一条：</span> <span>这已经是最新一条了</span></li>
+            [/#if]
+            [/@InfoPrev]
+            [@InfoNext id=info.id;i]
+            [#if i??]
+            <li class="title_top"><span class="b c-000">下一条：</span> <a href="${i.url}" class="a" style="text-decoration: none;color: #000;font-size: 0.88rem">${i.title!}</a></li>
+            [#else]
+            <li class="title_top"><span class="b c-000">下一条：</span> <span>这已经是最后一条了</span></li>
+            [/#if]
+            [/@InfoNext ]
+        </ul>
+    </div>
+</div>
+<div class="three_both">
+    <div class="top_left">
+        <h4>产品中心</h4>
+        <div class="xian"></div>
+        <p>PRODUCT CENTER</p>
+    </div>
+    <!--pc端-->
+    <div class="three_body">
+        <div class="nei-container">
+            <div class="swiper-wrapper">
+                [@InfoList node='anli' isIncludeChildren='true' ;list]
+                [#list list as info]
+                <a href="${info.url}" class="swiper-slide list_one">
+                    <div class="list_img">
+                        <img src="${info.smallImage}" alt="">
+                    </div>
+                    <div class="list_text">
+                        <h4>${info.title}</h4>
+                    </div>
+                </a>
+                [/#list]
+                [/@InfoList]
+            </div>
+        </div>
+        <div class="swiper-button-prev"></div><!--左箭头。如果放置在swiper-container外面
+，需要自定义样式。-->
+        <div class="swiper-button-next"></div><!--右箭头。如果放置在swiper-container外面
+，需要自定义样式。-->
+    </div>
+    <!--手机端-->
+    <div class="phone_body">
+        <div class="list_body">
+            [@InfoList node='anli' isIncludeChildren='true' limit='4';list]
+            [#list list as info]
+            <a href="${info.url}" class="list_one">
+                <div class="list_img">
+                    <img src="${info.smallImage}" alt="">
+                </div>
+                <div class="list_text">
+                    <h4>${info.title}</h4>
+                </div>
+            </a>
+            [/#list]
+            [/@InfoList]
+        </div>
+    </div>
+</div>
+<!--pc_底部-->
+<div class="footer">
+    [#include 'footer.html'/]
+</div>
+<!--phone_底部-->
+<div class="phone_footer">
+    [#include 'nav_footer.html'/]
+</div>
+<link rel="stylesheet" href="_files/js/animate.min.css">
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+<script>
+    var mySwipernei = new Swiper('.nei-container', {
+        slidesPerView: 3,
+        spaceBetween: 30,
+        loop: true,
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        loop: true,
+    });
+    window._bd_share_config = {
+        common : {
+            bdPopTitle:'窗口标题',
+            bdText : '发现一个新的网页，快来围观啊~',
+            bdDesc : 'Custom share summary', // 自定义分享摘要
+            bdUrl : 'http://www.yihongshiji.com/',     //自定义分享url地址
+            bdPic : 'images/code.png' //自定义分享图片
+        },
+        share : [{
+            "bdSize" : 16
+        }],
+
+
+
+    }
+    with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+</body>
+</html>
+[/#escape]

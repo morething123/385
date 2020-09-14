@@ -1,0 +1,96 @@
+.pc_footer {
+  width: 100%;
+  height: 100%;
+  border: 1px solid #E8E8E8;
+}
+.pc_footer .footer_body {
+  display: flex;
+  justify-content: space-between;
+  width: 60%;
+  margin: auto;
+  padding: 2rem 0;
+}
+.pc_footer .footer_body ul {
+  width: 15%;
+}
+.pc_footer .footer_body ul li {
+  line-height: 3.5rem;
+}
+.pc_footer .footer_body ul li a {
+  text-decoration: none;
+}
+.pc_footer .footer_body ul li a h4 {
+  height: 1.92rem;
+  font-size: 1.6rem;
+  font-weight: 400;
+  color: #333333;
+}
+.pc_footer .footer_body ul li a span {
+  height: 1.25rem;
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: #999999;
+}
+.pc_footer .footer_body ul:nth-child(4) {
+  width: 30%;
+}
+.pc_footer .footer_body ul:nth-child(4) li:nth-child(3) {
+  display: flex;
+  justify-content: space-between;
+  width: 60%;
+}
+.pc_footer .footer_body ul:nth-child(4) li:nth-child(3) img {
+  width: 8.92rem;
+  height: 8.92rem;
+}
+.pc_footer .footer_body ul:nth-child(5) {
+  width: 18%;
+}
+.pc_footer .footer_body ul:nth-child(5) li:nth-child(3) {
+  width: 70%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.pc_footer .footer_body ul:nth-child(5) li:nth-child(3) .fenxiang {
+  width: 100%;
+  display: inline-block;
+}
+.pc_footer .footer_body ul:nth-child(5) li:nth-child(3) .fen span {
+  width: 35%;
+  margin: auto;
+}
+.pc_footer .footer_body ul:nth-child(5) li:nth-child(3) .bdshare-button-style0-16 .slide-sqq,
+.pc_footer .footer_body ul:nth-child(5) li:nth-child(3) .bdshare-button-style0-16 .bds_tsina,
+.pc_footer .footer_body ul:nth-child(5) li:nth-child(3) .bdshare-button-style0-16 .slide-weixin,
+.pc_footer .footer_body ul:nth-child(5) li:nth-child(3) .bdshare-button-style0-16 .slide-renren,
+.pc_footer .footer_body ul:nth-child(5) li:nth-child(3) .bdshare-button-style0-16 .slide-qzone,
+.pc_footer .footer_body ul:nth-child(5) li:nth-child(3) .bdshare-button-style0-16 .slide-tqq {
+  background-position: 0 !important;
+}
+.pc_footer .footer_body ul:nth-child(5) li:nth-child(3) .bdshare-button-style0-16 .bds_tsina {
+  background: url("../img/wb.png") 1.25% no-repeat !important;
+  height: 5rem;
+  width: 3rem;
+  line-height: 32px !important;
+  margin-right: 2rem;
+}
+.pc_footer .footer_body ul:nth-child(5) li:nth-child(3) .bdshare-button-style0-16 .slide-weixin {
+  background: url("../img/wx.png") 1.25% no-repeat !important;
+  /*height: 100px !important;*/
+  line-height: 32px !important;
+  height: 5rem;
+  width: 3rem;
+}
+.bei {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+.bei p {
+  height: 1.17rem;
+  font-size: 1.17rem;
+  font-weight: 400;
+  color: #999999;
+}
+/*# sourceMappingURL=footer.css.map */

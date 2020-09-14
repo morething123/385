@@ -1,0 +1,74 @@
+[#escape x as (x)!?html]
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<title>[#if (node.number)??&&node.number='index']${node.metaKeywords!node.name}_${site.fullNameOrName}[#else][#if (info.fullTitle)??]${info.fullTitle}_[#elseif (info.title)??]${info.title}_[#elseif (node.name)??][#if (node.customs['arae'])??]${node.customs['arae']}[/#if]${node.name}_[#else]搜索结果_[/#if]${site.fullNameOrName}[/#if]</title>
+<meta name="keywords" content="[#if (info.tagKeywords)??]${info.tagKeywords}[#elseif (node.metaKeywords)??]${node.metaKeywords}[/#if]"/>
+<meta name="description" content="[#if (info.metaDescription)??]${info.metaDescription}[#elseif (node.metaDescription)??]${node.metaDescription}[/#if]"/>
+[#if site.customs['site_favicon_ico']??]
+<meta property="og:image" content="${site.customs['baidu_snapshot']}">
+[#else]
+<meta property="og:image" content="_files/img/ogimage.jpg">
+[/#if]
+<meta http-equiv="imagetoolbar" content="false">
+[#if site.customs['site_favicon_ico']??]
+<link rel="shortcut icon" href="${site.customs['site_favicon_ico']}" type="image/x-icon">
+[#else]
+<link rel="shortcut icon" href="_files/img/favicon.ico" type="image/x-icon">
+[/#if]
+<!-- 开发 -->
+<link rel="stylesheet" href="_files/css/normalize.css">
+<link rel="stylesheet" href="_files/css/footer.css">
+<link rel="stylesheet" href="_files/css/common.min.css">
+<link rel="stylesheet" href="_files/css/swiper.min.css">
+<link rel="stylesheet" href="_files/css/reset.min.css">
+<link rel="stylesheet" href="_files/css/everyone.min.css">
+<link rel="stylesheet" href="_files/css/co.css">
+<link rel="stylesheet" href="_files/css/header.min.css">
+<link rel="stylesheet" href="_files/fonts/iconfont.css">
+<link rel="stylesheet" href="_files/css/nav_footer.css">
+<link rel="stylesheet" href="_files/css/pheader.min.css">
+<script type="text/javascript" src="http://api.map.baidu.com/api?key=&v=1.1&services=true"></script>
+
+<!-- 上线 -->
+<!--系统已存在公用样式及JS资源-->
+<!--<link rel="stylesheet" href="${ctx}/static/vendor/Amaze/css/amazeui.min.css">-->
+<!--<link rel="stylesheet" href="_files/mincss/base.css">-->
+<!--<script src="${ctx}/static/vendor/jquery/jquery.min.js"></script>-->
+<!--<script src="${ctx}/static/vendor/swiper/swiper.js"></script>-->
+<!--<script src="${ctx}/static/vendor/Amaze/js/amazeui.js"></script>-->
+
+
+<!-- 百度统计 -->
+[#if (site.customs['baidutongji'])??]
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?${site.customs['baidutongji']}";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+[/#if]
+<!-- 百度推送 -->
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        }
+        else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+<script type="text/javascript">
+    document.write(unescape("%3Cscript src='/visit_log%3Furl%3D") + document.location.href + unescape("%26referrer%3D") + document.referrer + unescape("' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<!--[if lt IE 9]>
+<script src="${ctx}/static/js/html5.js"></script>
+<![endif]-->
+[/#escape]

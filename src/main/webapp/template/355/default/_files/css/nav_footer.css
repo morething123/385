@@ -1,0 +1,112 @@
+/*    footer*/
+.nav_footer {
+    background:rgba(6,145,202,1);
+    /*padding: 10px 0 6px 0;*/
+    width: 100%;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    height: 56px;
+}
+.nav_footer ul {
+    height: 0px;
+}
+.nav_footer ul li {
+    float: left;
+    width: 33%;
+    text-align: center;
+    list-style-type: none;
+    margin:7px 0 0 0;
+    padding: 0px;
+}
+.nav_footer ul li span {
+    display: block;
+    color: #fff;
+    font-size: 14px;
+    line-height: 22px;
+}
+.nav_footer ul li a {
+    color: #000;
+    text-decoration: none !important;
+}
+
+.close_phone{
+    background: rgba(0,0,0,0.9);
+    /* position: absolute; */
+    height: 100%;
+    top: 0;
+    /* float: left; */
+    /* display: flex; */
+    /* position: relative; */
+    position: fixed;
+    width: 37%;
+    z-index: 100;
+}
+.close_phone ul{
+    text-align: center;
+    /* margin: 50%; */
+    /* width: 50%; */
+    margin-top: 100%;
+}
+.close_phone ul li{
+    list-style: none;
+    margin: auto;
+    padding: 16%;
+
+}
+.close_phone ul li a{
+    font-size: 18px;
+    color: #fff;
+    text-decoration: none;
+}
+.close_phone .close_img{
+    display: inline-block;
+    float: left;
+    margin-top: 60%;
+}
+.close_phone .close_img img{
+    width: 60%;
+}
+.close_phone ul :nth-child(1){
+    animation-duration:0.4s;
+}
+#one{
+    /*animation-duration:0.4s;*/
+    /*animation-delay: 1s;*/
+}
+.close_phone ul :nth-child(2){
+    /*动画持续时间*/
+    animation-duration:0.4s;
+    /*动画延迟时间*/
+    animation-delay: 0.1s;
+}
+.close_phone .about_tel #two{
+    /*动画持续时间*/
+    /*animation-duration:0.4s;*/
+    /*动画延迟时间*/
+    /*animation-delay: 0.1s;*/
+}
+.close_phone ul :nth-child(3){
+    animation-delay: 0.2s;
+    animation-duration: 0.4s;
+}
+/*#three{*/
+/*    animation-delay: 0.2s;*/
+/*    animation-duration: 0.4s;*/
+/*}*/
+.close_phone ul :nth-child(4){
+    animation-delay: 0.3s;
+    animation-duration: 0.4s;
+}
+/*#four{*/
+/*    animation-delay: 0.3s;*/
+/*    animation-duration: 0.4s;*/
+/*}*/
+.close_phone ul :nth-child(5){
+    animation-delay: 0.4s;
+    animation-duration: 0.4s;
+}
+/*#five{*/
+/*    animation-delay: 0.4s;*/
+/*    animation-duration: 0.4s;*/
+/*}*/

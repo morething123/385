@@ -1,0 +1,111 @@
+@import "base.less";
+body {
+  font-family: "Microsoft YaHei","Segoe UI","Lucida Grande",Helvetica,Arial,FreeSans,Arimo,"Droid Sans","wenquanyi micro hei","Hiragino Sans GB","Hiragino Sans GB W3",FontAwesome,sans-serif;
+}
+
+[class*=am-u-] {
+  padding: 0;
+}
+
+.am-u-sm-12 {
+  padding: 0 2px;
+}
+
+.am-slider-default {
+  margin: 0;
+  box-shadow: none;
+}
+
+.am-breadcrumb {
+  margin: 0;
+}
+
+//.am-menu ul {
+//  padding-top: 15rem;
+//}
+
+.am-menu-offcanvas1 .am-menu-nav > li > a {
+  color: #fff;
+  font-size: 1.5rem;
+  height: 55px;
+  line-height: 55px;
+}
+
+.am-menu-offcanvas1 .am-menu-sub a {
+  font-size: 1.4rem;
+}
+
+.am-slider-default .am-control-thumbs {
+  margin: 0;
+  padding: 5px;
+  width: 100%;
+  text-align: center;
+  background: #000;
+}
+
+.am-viewport {
+  width: 100%;
+}
+
+@media (min-width: 641px) {
+  .am-slider-default .am-control-thumbs {
+    li {
+      float: none;
+      display: inline-block;
+      width: 10%;
+      margin-right: 10px
+    }
+  }
+}
+
+.am-menu-offcanvas1 .am-menu-nav > li > a {
+  text-align: left;
+  i {
+    background: none;
+    border: none;
+
+    &:first-child {
+      color: #fff;
+      font-size: 2rem;
+      height: 3rem;
+      width: 4rem;
+    }
+    &:nth-child(2) {
+      color: #fff;
+      font-size: 2rem;
+      line-height: 7rem;
+      width: 4rem;
+    }
+  }
+}
+
+.am-offcanvas-bar {
+  background: rgba(0, 0, 0, .8);
+}
+
+.am-menu-offcanvas1 .am-menu-nav > li > a {
+  background: rgba(10, 10, 10, 1);
+  opacity: 0.8;
+}
+
+// 侧边栏点击
+.am-menu-offcanvas1 .am-menu-nav > .am-parent > a:after {
+  content: "";
+}
+
+.am-menu-offcanvas1 .am-menu-nav > .am-parent.am-open > a:after {
+  content: "";
+}
+
+// 表格重置
+.am-table-striped > tbody > tr:nth-child(odd) > td {
+  background-color: #E2E2E2;
+}
+
+.am-table-striped > tbody > tr:nth-child(even) > td {
+  background-color: #F9F9F9;
+}
+
+.am-table-striped > tfoot td {
+  background-color: #F2F3EE;
+}

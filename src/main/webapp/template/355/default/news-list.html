@@ -1,0 +1,156 @@
+[#escape x as (x)!?html]
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    [#include 'head-template.html'/]
+    <!--    <link rel="stylesheet" href="_files/css/lian.min.css">-->
+    <link rel="stylesheet" href="_files/css/news.css">
+    <script src="_files/js/swiper.min.js"></script>
+    <script src="_files/js/jquery.number.js"></script>
+    <script src="_files/js/swiper.animate.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.css">
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=3.0&ak=l1ZQiVf88GQMmqMoUT2gttonI5oKnpEC"></script>
+</head>
+<body>
+<div id="header">
+    [#include 'header.html'/]
+</div>
+
+<!--手机头部-->
+<div class="phone_header">
+    [#include 'phone_header.html'/]
+</div>
+<!--主体部分-->
+<div class="header_img" >
+    <img src="_files/img/bothbanner.png" alt="">
+</div>
+<div class="ph_img" >
+    <img src="_files/img/bannerl4.png" alt="">
+</div>
+<!--地址-->
+<div class="news_body">
+    <div class="news_stree">
+        <div class="daohang">
+            <a href="${site.url}">首页></a>
+            <span>新闻中心</span>
+        </div>
+        <form action="/site-gsl/search" method="get" target="_blank">
+            <div class="sousuo">
+                <input  name="q"  autocomplete="off" type="text" placeholder="热门搜索词：打包带 穿剑式打包机带 迷你黑色打包带">
+                <div class="input_img">
+                    <img src="_files/img/ssuo.png" alt="">
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="bcx"></div>
+    <!--产品中心-->
+    <div class="news_list">
+        <!--产品选项-->
+        <div class="thingList">
+            <div class="list_body">
+                [@InfoPage nodeId=node.id isIncludeChildren='true' pageSize='8';pagedList]
+                [#list pagedList.content as info]
+                <a href="${info.url}" class="swiper-slide list_one">
+                    <div class="list_img">
+                        <div class="img_first">
+                            <img src="${info.smallImage}" alt="">
+                        </div>
+                        <div class="list_text">
+                            <h4>${info.title}</h4>
+                            <span>[#noescape]${info.text}[/#noescape]</span>
+                            <div class="text_time">
+                                <p>${info.publishDate?string('YYYY/MM/dd')}</p>
+                                <button>查看详情</button>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                [/#list]
+                <div class="yema" style="margin-top: 50px;width: 100%;text-align: center">
+                    [#include 'page.html'/]
+                </div>
+                [/@InfoPage]
+            </div>
+            <!--产品-->
+        </div>
+    </div>
+    <div class="three_both">
+        <div class="top_left">
+            <h4>产品中心</h4>
+            <div class="xian"></div>
+            <p>PRODUCT CENTER</p>
+        </div>
+        <!--pc端-->
+        <div class="three_body">
+            <div class="nei-container">
+                <div class="swiper-wrapper">
+                    [@InfoList node='anli' isIncludeChildren='true' ;list]
+                    [#list list as info]
+                    <a href="${info.url}" class="swiper-slide list_one">
+                        <div class="list_img">
+                            <img src="${info.smallImage}" alt="">
+                        </div>
+                        <div class="list_text">
+                            <h4>${info.title}</h4>
+                        </div>
+                    </a>
+                    [/#list]
+                    [/@InfoList]
+                </div>
+            </div>
+            <div class="swiper-button-prev"></div><!--左箭头。如果放置在swiper-container外面
+，需要自定义样式。-->
+            <div class="swiper-button-next"></div><!--右箭头。如果放置在swiper-container外面
+，需要自定义样式。-->
+        </div>
+        <!--手机端-->
+        <div class="phone_body">
+            <div class="list_body">
+                [@InfoList node='anli' isIncludeChildren='true' limit='4' ;list]
+                [#list list as info]
+                <a href="${info.url}" class="list_one">
+                    <div class="list_img">
+                        <img src="${info.smallImage}" alt="">
+                    </div>
+                    <div class="list_text">
+                        <h4>${info.title}</h4>
+                    </div>
+                </a>
+                [/#list]
+                [/@InfoList]
+            </div>
+        </div>
+    </div>
+</div>
+<!--pc_底部-->
+<div class="footer">
+    [#include 'footer.html'/]
+</div>
+<!--phone_底部-->
+<div class="phone_footer">
+    [#include 'nav_footer.html'/]
+</div>
+<link rel="stylesheet" href="_files/js/animate.min.css">
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+<script>
+    var mySwipernei = new Swiper('.nei-container', {
+        slidesPerView: 3,
+        spaceBetween: 30,
+        loop: true,
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        loop: true,
+    });
+    $(".thisgList_header a").each(function () {
+        if ($(this)[0].href == String(window.location)) {
+            $(this).addClass("aChange").siblings().removeClass("aChange");
+        }
+    });
+</script>
+</body>
+</html>
+[/#escape]

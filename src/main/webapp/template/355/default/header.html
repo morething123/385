@@ -1,0 +1,34 @@
+[#escape x as (x)!?html]
+<div class="layout">
+    <header class="am-hide-sm-only">
+        <div class="logo">
+            <div class=" logo_img">
+                <a href="${site.url}">
+                    <img src="_files/img/Logo.png" alt="">
+                </a>
+            </div>
+            <ul>
+                <li class="">
+                    <a href="${site.url}" class=""><h4>首页</h4></a>
+                </li >
+                [@NodeList limit='4';list]
+                [#list list as n]
+                <li class="">
+                    <a href="${n.url}" class="[#if (node.hierarchy[1])?? && node.hierarchy[1].id == n.id]on[/#if]"><h4>${n.name}</h4></a>
+                </li>
+                [/#list]
+                [/@NodeList]
+            </ul>
+        </div>
+    </header>
+</div>
+<!--<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>-->
+<script>
+    $(".logo ul li a").each(function () {
+        if ($(this)[0].href == String(window.location)) {
+            $(this).addClass("on").siblings().removeClass("on");
+        }
+    });
+
+</script>
+[/#escape]

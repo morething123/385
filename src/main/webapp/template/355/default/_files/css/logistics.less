@@ -1,0 +1,113 @@
+@import "base.less";
+
+body {
+  background: #fff;
+}
+
+@media (max-width: 641px) {
+  .node-banner {
+    height: 10rem;
+    width: 100%;
+    background-image: url('../img/smallBanner.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 170%;
+    img{
+      display: none;
+    }
+  }
+}
+
+.breadcrumb {
+  margin-top: 3.2rem;
+  background: #f8f8f8;
+}
+
+.floor1 {
+  padding-bottom: 8rem;
+
+  .top {
+    text-align: center;
+    .btn-group {
+      display: inline-block;
+      margin: 0 auto;
+      margin-bottom: 5rem;
+      @media (max-width: 641px) {
+        margin-bottom: 2rem;
+        width: 100%;
+      }
+        .btn {
+        float: left;
+        margin-right: 7.65rem;
+        height: 4.5rem;
+        width: 14rem;
+        border: 1px solid #E8E8E8;
+        line-height: 4.5rem;
+        text-align: center;
+        @media (max-width: 641px) {
+          margin-right: 5%;
+          width: 30%;
+          height: 3rem;
+          line-height: 3rem;
+        }
+        &:last-child {
+          margin-right: 0;
+        }
+
+        a {
+          font-size: 1.65rem;
+          line-height: 1;
+          color: #666;
+          @media (max-width: 641px) {
+            font-size: 1.3rem;
+          }
+        }
+        &.current {
+          background-color: @main-color;
+          a {
+            color: #fff;
+          }
+        }
+      }
+    }
+  }
+
+  .content {
+    img {
+      margin: 0 auto;
+      margin-bottom: 4.8rem;
+      @media (max-width: 641px) {
+        margin-bottom: 2rem;
+      }
+    }
+    p {
+      margin-bottom: 4.1rem;
+      font-size: 1.7rem;
+      color: #333;
+      @media (max-width: 641px) {
+        margin-bottom: 2rem;
+        font-size: 1.3rem;
+      }
+    }
+
+    .btn {
+      margin: 0 auto;
+      margin-top: 8rem;
+      height: 5.3rem;
+      width: 23.3rem;
+      font-size: 1.65rem;
+      line-height: 5.3rem;
+      text-align: center;
+      cursor: pointer;
+      color: #fff;
+      background-color: @main-color;
+      @media (max-width: 641px) {
+        display: none;
+        //height: 3rem;
+        //width: 15rem;
+        //font-size: 1.3rem;
+        //line-height: 3rem;
+      }
+    }
+  }
+}

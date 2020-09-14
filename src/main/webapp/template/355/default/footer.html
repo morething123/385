@@ -1,0 +1,120 @@
+[#escape x as (x)!?html]
+<div class="pc_footer">
+    <div class="footer_body">
+        <!--第一竖列-->
+        <ul class="one_lie">
+            [@NodeList parent='anli' limit='3';secondChild]
+            <li>
+                <a href="${site.url}/node/1626">
+                    <h4>产品中心</h4>
+                </a>
+            </li>
+            [#list secondChild as second]
+            <li>
+                <a href="${second.url}">
+                    <span>${second.name}</span>
+                </a>
+            </li>
+            [/#list]
+            [/@NodeList]
+        </ul>
+    <!--第二竖列-->
+        <ul class="one_lie">
+            <li>
+                [@Node number='about';bean]
+                <a href="${bean.url}">
+                    <h4>关于我们</h4>
+                </a>
+                [/@Node]
+            </li>
+            <li>
+                <a href="#">
+                    <span>我们的简介</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span>我们的荣誉</span>
+                </a>
+            </li>
+        </ul>
+     <!--第三竖列-->
+        <ul class="one_lie">
+            <li>
+                [@Node number='news';bean]
+                <a href="${bean.url}">
+                    <h4>新闻中心</h4>
+                </a>
+                [/@Node]
+            </li>
+            <li>
+                <a href="#">
+                    <span>公司新闻</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span>行业动态</span>
+                </a>
+            </li>
+        </ul>
+        <!--第四竖列-->
+        <ul class="one_lie">
+            <li>
+                <a href="#">
+                    <h4>微信二维码</h4>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span>扫一扫了解更多产品信息</span>
+                </a>
+            </li>
+            <li>
+                <img src="${site.customs['qrCode']}" alt="">
+            </li>
+        </ul>
+        <!--第五竖列-->
+        <ul class="one_lie">
+            <li>
+                <a href="#">
+                    <h4>分享给您的好友</h4>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span>点击分享</span>
+                </a>
+            </li>
+            <li>
+                <div class="bdsharebuttonbox fenxiang" data-tag="share_1">
+                    <a class="bds_tsina" data-cmd="tsina"></a>
+                    <a href="#" class="slide-weixin" data-cmd="weixin"></a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+<!--备案号-->
+<div class="bei">
+    <p>备案号：${site.customs['icp']} 技术支持：亿宏世纪网络科技</p>
+</div>
+<script>
+    window._bd_share_config = {
+        common : {
+            bdPopTitle:'窗口标题',
+            bdText : '发现一个新的网页，快来围观啊~',
+            bdDesc : 'Custom share summary', // 自定义分享摘要
+            bdUrl : 'http://www.yihongshiji.com/',     //自定义分享url地址
+            bdPic : 'images/code.png' //自定义分享图片
+        },
+        share : [{
+            "bdSize" : 16
+        }],
+
+
+
+    }
+    with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+[/#escape]

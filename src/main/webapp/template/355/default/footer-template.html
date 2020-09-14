@@ -1,0 +1,236 @@
+[#escape x as (x)!?html]
+<!-- 底部 -->
+<footer>
+    <div class="container am-g">
+
+        <div class="am-u-md-9 center clearfix am-hide-sm-only">
+            <ul>
+                <h3>核心业务</h3>
+                [@NodeList parent='serve' limit='3';list]
+                [#list list as n]
+                <li>
+                    <a href="${n.url}">
+                        ${n.title}
+                    </a>
+                </li>
+                [/#list]
+                [/@NodeList]
+                <li>
+
+                    <div class="bdsharebuttonbox mt20"><a href="#" class="bds_more a-none" data-cmd="more">分享到：</a><a
+                            href="#"
+                            class="bds_qzone"
+                            data-cmd="qzone"
+                            title="分享到QQ空间"></a><a
+                            href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq"
+                                                                                               data-cmd="tqq"
+                                                                                               title="分享到腾讯微博"></a><a
+                            href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#"
+                                                                                                class="bds_weixin"
+                                                                                                data-cmd="weixin"
+                                                                                                title="分享到微信"></a>
+                    </div>
+                    <script>
+                        window._bd_share_config = {
+                            "common": {
+                                "bdSnsKey": {},
+                                "bdText": "",
+                                "bdMini": "2",
+                                "bdMiniList": false,
+                                "bdPic": "",
+                                "bdStyle": "0",
+                                "bdSize": "16"
+                            }, "share": {}
+                        };
+                        with (document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = '/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];
+                    </script>
+                </li>
+            </ul>
+            <ul>
+                <h3>快速导航</h3>
+                [@NodeList parent='index' limit='5';list]
+                [#list list as n]
+                [#if (n.number)?? && n.number== 'banner']
+                [#else]
+                <li>
+                    <a href="${n.url}" rel="nofollow" target="_blank">
+                        ${n.name}
+                    </a>
+                </li>
+                [/#if]
+                [/#list]
+                [/@NodeList]
+            </ul>
+            <ul>
+                <h3>联系我们</h3>
+                <li class="clearfix">
+                   <i class="iconfont icondianhua1"></i><span>${site.customs['fixedLine']}</span>
+                </li>
+                <li class="clearfix">
+                    <i class="iconfont iconchuanzhen"></i><span>${site.customs['fax']}</span>
+                </li>
+                <li class="clearfix">
+                    <i class="iconfont iconyouxiang"></i><span>${site.customs['mailAddr']}</span>
+                </li>
+                <li class="clearfix">
+                    <i class="iconfont icondizhi"></i><span>${site.customs['addr']}</span>
+                </li>
+
+            </ul>
+        </div>
+        <div class="am-u-md-3 right am-hide-sm-only">
+            <img src="_files/img/qrcode.jpg" alt="德洋" class="am-img-responsive">
+            <p>扫一扫关注我们</p>
+        </div>
+    </div>
+    <div class="copy">
+        <p class="am-hide-sm-only">[#include '../../common/copy-cn.html'/]</p>
+        <p class="am-show-sm-only">[#include '../../common/m-copy-cn.html'/]</p>
+    </div>
+</footer>
+<!-- 移动端： 回到顶部 -->
+<div class="go-top am-show-sm-only">
+    <div data-am-smooth-scroll>
+        回到顶部 <i class="iconfont icon-shang"></i>
+    </div>
+</div>
+<!-- 移动端侧边栏 -->
+<div class="am-g am-show-sm-only m-footer">
+    <div class="am-u-sm-3">
+        <div class="menu-bars">
+            <a href="#doc-oc-demo1" data-am-offcanvas="{effect: 'push'}"><i
+                    class="am-menu-toggle-icon am-icon-bars"></i><br>主菜单</a>
+            <!-- 侧边栏内容 -->
+            <nav data-am-widget="menu" class="am-menu  am-menu-offcanvas1" data-am-menu-offcanvas>
+                <a href="javascript: void(0)" class="am-menu-toggle"></a>
+
+                <div class="am-offcanvas">
+                    <div class="am-offcanvas-bar">
+                        <ul class="am-menu-nav am-avg-sm-1">
+                            <li>
+                                <a href="${site.url}" class="">
+                                    <i class="iconfont icon-index"></i>
+                                    首页
+                                    <i class="iconfont icon-youjiantou1 am-fr"></i>
+                                </a>
+                            </li>
+                            [@NodeList;list]
+                            [#list list as n]
+                            [#if (n.number)?? && n.number== 'banner']
+                            [#else]
+                            [@NodeList parentId=n.id;listchild]
+
+                            <li class="[#if (node.hierarchy[1])?? && node.hierarchy[1].id == n.id]actived[/#if] [#if (n.number)?? && n.number == 'about'][#else][#if listchild?size>0]am-parent[/#if][/#if]">
+                                <a href="[#if (n.number)?? && n.number == 'about']${n.url}[#else][#if listchild?size>0]#[#else]${n.url}[/#if][/#if]">
+                                    <i class="iconfont [#if (n.customs['iconfont'])??]${n.customs['iconfont']}[/#if]"></i>
+                                    ${n.name}
+                                    <i class="iconfont icon-youjiantou1 am-fr"></i></a>
+                                </a>
+                                [#if (n.number)?? && n.number != 'about']
+                                <ul class="am-menu-sub am-collapse ">
+                                    [#list listchild as nchild]
+                                    <li class="">
+                                        <a href="${nchild.url}" class="">
+                                            ${nchild.name}
+                                            <i class="iconfont icon-youjiantou1 am-fr"></i>
+                                        </a>
+                                    </li>
+                                    [/#list]
+                                </ul>
+                                [/#if]
+                            </li>
+                            [/@NodeList]
+
+                            [/#if]
+                            [/#list]
+                            [/@NodeList]
+                        </ul>
+                        <div class="close" data-rel="close">
+                            <i class="iconfont iconguanbi"></i>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <div class="am-u-sm-3">
+        <a href="tel:${site.customs['fixedLine']}"><i
+                class="iconfont icondianhua am-text-middle"></i><br>电话</a>
+    </div>
+    <div class="am-u-sm-3">
+        <a href="tel:${site.customs['phone']}"><i class="iconfont iconshouji-copy am-text-middle"></i><br>手机</a>
+    </div>
+    <div class="am-u-sm-3" style="float: left;">
+        <a href="mailto:${site.customs['mailAddr']}"><i class="iconfont iconyouxiang am-text-middle"></i><br>邮箱</a>
+    </div>
+</div>
+<!-- 弹出栏 -->
+<div class="layer">
+    <div class="popover">
+        <div class="content">
+            <div class="title">写下您的需求，我们将及时与您联系</div>
+
+            <form id="guestbookForm" action="${ctx}/guestbook2/create2" method="post" class="clearfix">
+                <input type="hidden" name="status_0" value="留言成功！"/>
+                <input type="hidden" name="status_1" value="留言成功，请等待管理员审核！"/>
+                <input type="hidden" name="siteNumber" value="dycn"/>
+                <input type="hidden" name="typeId" value="250"/>
+                <input type="hidden" name="nextUrl" value="${ctx}/"/>
+                <input type="text" id="name" name="username" placeholder="姓名">
+                <input type="text" id="phone" name="phone" placeholder="电话">
+                <textarea id="text" name="text" placeholder="咨询内容"></textarea>
+                <button type="submit" onClick='javascript:return checkPhone(0);'>提交</button>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    // 关闭侧边栏
+    $(".close").click(function () {
+        $(".am-offcanvas").offCanvas('close');
+    });
+
+    // 侧边栏tab
+    $(".am-parent").click(function () {
+        $(".am-parent").find("a:eq(0) i:nth-child(2)").removeClass("icon-xiajiantou").addClass("icon-youjiantou");
+        var iconfont = $(this).find("a:eq(0) i:nth-child(2)");
+        if ($(this).data('click') == true) {
+            $(iconfont).removeClass("icon-xiajiantou").addClass("icon-youjiantou");
+            $(this).data('click', false);
+        } else {
+            $(iconfont).removeClass("icon-youjiantou").addClass("icon-xiajiantou");
+            $(this).data('click', true);
+        }
+    });
+    function checkPhone(b) {
+        var username = jQuery("#email").val().trim();
+        if (username == "") {
+            alert("邮箱不可为空！");
+            return false;
+        }
+        var a = jQuery("#mobile").val().trim();
+        var myreg = /^[1][3,4,5,7,8][0-9]{9}$/;
+        if (!myreg.test(a)) {
+            alert('手机号格式错误，望修改');
+            return false;
+        }
+        var text = jQuery("#text").val().trim();
+        if (text == "") {
+            alert("信息不可为空！");
+            return false;
+        }
+        return true;
+    };
+
+    var width = document.documentElement.clientWidth;
+    if (width > 641) {
+        function showLayer() {
+            $(".layer").show();
+        }
+
+        $(".layer").click(function () {
+            $(".layer").hide();
+        })
+    }
+</script>
+[/#escape]

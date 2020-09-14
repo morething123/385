@@ -1,0 +1,48 @@
+[#escape x as (x)!?html]
+<div class="nav_footer">
+    <ul>
+        <li class="open_phone">
+            <a href="#">
+                <img src="_files/img/cai.png" alt="">
+                <span>菜单</span></a>
+        </li>
+        <li style="position:relative;">
+            <a href="tel:0371-56619755">
+                <img src="_files/img/phone.png" alt="">
+                <span>电话</span></a>
+        </li>
+        <li>
+            <a href="https://map.baidu.com/search/%E6%B2%B3%E5%8D%97%E7%9C%81%E9%83%91%E5%B7%9E%E5%B8%82%E4%BA%8C%E4%B8%83%E5%8C%BA%E6%94%BF%E9%80%9A%E8%B7%AF%E6%B7%AE%E6%B2%B3%E8%B7%AF%E5%8D%97200%E7%B1%B3%E8%B7%AF%E4%B8%9C254%E5%8F%B7/@12650774.489663394,4102870.133925,17.46z?querytype=s&da_src=shareurl&wd=%E6%B2%B3%E5%8D%97%E7%9C%81%E9%83%91%E5%B7%9E%E5%B8%82%E4%BA%8C%E4%B8%83%E5%8C%BA%E6%94%BF%E9%80%9A%E8%B7%AF%E6%B7%AE%E6%B2%B3%E8%B7%AF%E5%8D%97200%E7%B1%B3%E8%B7%AF%E4%B8%9C254%E5%8F%B7&c=268&src=0&pn=0&sug=0&l=13&b=(12620610.036632452,4091170.5497731688;12682178.036632452,4119810.5497731688)&from=webmap&biz_forward=%7B%22scaler%22:1,%22styles%22:%22pl%22%7D&device_ratio=1" alt="">
+                <img src="_files/img/ding.png" alt="">
+                <span>地址</span></a>
+        </li>
+
+    </ul>
+</div>
+<div class="close_phone" style="display: none">
+    <ul class="about_tel">
+        <li id="one" class="animated slideInLeft"><a href="${site.url}">首页</a></li>
+        [@NodeList parent='index';list]
+        [#list list as n]
+        [#if (n.number)?? && n.number== 'banner']
+        [#else]
+        <li id="two" class="animated slideInLeft"><a href="${n.url}">${n.name}</a></li>
+        [/#if]
+        [/#list]
+        [/@NodeList]
+        <li class="close_img">
+            <img src="_files/img/close.png" alt="">
+        </li>
+    </ul>
+</div>
+<script>
+    $(".open_phone").click(function(){
+        console.log("开")
+        $(".close_phone").show();
+    })
+    $(".close_img").click(function () {
+        $(".close_phone").hide();
+    })
+</script>
+[/#escape]
+
