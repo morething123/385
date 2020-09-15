@@ -2,22 +2,47 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    [#include 'head-template.html'/]
-    <script src="_files/js/swiper.min.js"></script>
-
-    <script src="_files/js/swiper.animate.min.js"></script>
-<!--    <link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.css">-->
-<!--    <link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.css">-->
     <link rel="stylesheet" href="_files/css/index.css">
-    <script type="text/javascript" src="http://api.map.baidu.com/api?key=&v=1.1&services=true"></script>
-
+    <link rel="stylesheet" href="_files/css/syfooter.css">
+    [#include 'inc_head.html'/]
     <style type="text/css">
+        .fen .bdshare-button-style0-16 .bds_tsina{
+            background: url("_files/img/wb.png")100%/70% no-repeat !important;
+            height: 2.5rem;
+            width: 2.5rem;
+            line-height: 32px !important;
+            margin-right: 2rem;
+        }
+        .fen .bdshare-button-style0-16 .slide-weixin{
+            background: url("_files/img/wx.png")100%/70% no-repeat !important;
+            height: 2.5rem;
+            width: 2.5rem;
+            line-height: 32px !important;
+            margin-right: 2rem;
+        }
         .nei-container {
             --swiper-theme-color: #ff6600; /* 设置Swiper风格 */
             --swiper-navigation-color: #00ff33; /* 单独设置按钮颜色 */
             --swiper-navigation-size: 30px; /* 设置按钮大小 */
         }
-
+        .onchange{
+            float: right;
+        }
+        #header{
+            position: absolute;
+            z-index: 111;
+            width: 100%;
+        }
+        #header .layout .logo .logo_img a{
+            color: #fff;
+        }
+        #header .layout .logo .header_top .biaoti a h4{
+            color: #fff ;
+        }
+        .am-hide-sm-only .logo .biaoti .on h4 {
+            color: #2F77D1 !important;
+            line-height: 2rem;
+        }
     </style>
 </head>
 <body>
@@ -30,325 +55,440 @@
     [#include 'phone_header.html'/]
 </div>
 <!--主体部分-->
-<div class="index_body">
-    <!--第一部分-->
-    <div class="index_one">
-        <!--pc导航-->
-        <div class="pc_img pc-container">
-            <div class="swiper-wrapper">
+<div class="swiper-container">
+    <input type="hidden" id="initSet" value="[#if (Param.p0)??]1[#else]0[/#if]">
+    <div class="swiper-wrapper one_both">
+        <!-- 第一屏-->
+        <div class="swiper-slide" >
+            <!--pc导航-->
+            <div class="pc-t">
                 [@InfoList node='banner';infos]
                 [#list infos as bean]
-                <div class="swiper-slide">
+                <a href="">
+                    <img data-src="${bean.customs['pc_lun']}" src="_files/img/cai.png" alt="" class="pc_img">
+                </a>
+                [/#list]
+                [/@InfoList]
+                <div class="one_zt">
+                    <h4>成为可靠的汽车零部件集成服务商</h4>
+                    <p>专业品控    厂家直供    定制尺寸</p>
+                    [@Node number='gs';bean]
+                    <a href="${bean.url}">了解我们</a>
+                    [/@Node]
+                </div>
+                <!-- 如果需要分页器 -->
+            </div>
+            <!--phone-->
+            <div class="phone-t">
+                [@InfoList node='banner';infos]
+                [#list infos as bean]
+                <div class="">
                     <a href="">
-                        <img src="${bean.customs['pc_lun']}" alt="" class="pc_img">
+                        <img data-src="${bean.customs['phone_lun']}" src="_files/img/cai.png" alt="" class="phone_img">
                     </a>
                 </div>
                 [/#list]
                 [/@InfoList]
+                <!-- 如果需要分页器 -->
+                <!--                <div class="swiper-pagination phone"></div>-->
             </div>
-            <!-- 如果需要分页器 -->
-            <div class="swiper-pagination banner"></div>
+            <div class="one_zt">
+                <h4>成为可靠的汽车零部件集成服务商</h4>
+                <p>专业品控    厂家直供    定制尺寸</p>
+                [@Node number='gs';bean]
+                <a href="${bean.url}">了解我们</a>
+                [/@Node]
+            </div>
+            [#include 'inc_syfoot.html'/]
         </div>
-        <!--phone-->
-        <div class="phone-container">
-            <div class="swiper-wrapper">
-                [@InfoList node='banner';infos]
-                [#list infos as bean]
-                <div class="swiper-slide">
-                    <a href="">
-                        <img src="${bean.customs['phone_lun']}" alt="" class="phone_img">
-                    </a>
+        <!-- 第二屏-->
+        <div class="swiper-slide three_both">
+            <img data-src="_files/img/1.jpg" src="_files/img/cai.png" alt="">
+            <div class="three_body">
+                <div class="body_right">
+                    <h4>关于我们</h4>
+                    <span>ABOUT US</span>
+                    <div class="right_xian"></div>
+                    <p>汽车零部件股份有限公司成立于1996年。经过二十多年的发展，公司已经成为一家专业设计、生产汽车座椅头枕、扶手的高新技术企业，产品涵盖</p>
+                    <p>汽车座椅头枕总成、中间扶手总成、门扶手总成及头枕支杆等四大系列共200余种产品。公司的主要客户有宝马、奥迪、大众、福特、</p>
+                    <p>
+                        长城等主机厂及江森、李尔、佛吉亚等座椅厂。
+                    </p>
+                    <!--图片-->
+                    <div class="tp_bc">
+                        <img data-src="_files/img/sy1.png" src="_files/img/cai.png" alt="">
+                        <img data-src="_files/img/sy2.png" src="_files/img/cai.png" alt="">
+                        <img data-src="_files/img/sy3.png" src="_files/img/cai.png" alt="">
+                        <img data-src="_files/img/sy4.png" src="_files/img/cai.png" alt="">
+                        <img data-src="_files/img/sy5.png" src="_files/img/cai.png" alt="">
+                        <img data-src="_files/img/sy6.png" src="_files/img/cai.png" alt="">
+                        <img data-src="_files/img/sy7.png" src="_files/img/cai.png" alt="">
+                        <img data-src="_files/img/sy8.png" src="_files/img/cai.png" alt="">
+                        <img data-src="_files/img/sy9.png" src="_files/img/cai.png" alt="">
+                        <img data-src="_files/img/sy10.png" src="_files/img/cai.png" alt="">
+                    </div>
+                    <div class="buttom_more">
+                        [@Node number='aboutus';bean]
+                        <a href="${bean.url}" class="more">更多产品</a>
+                        [/@Node]
+                    </div>
                 </div>
-                [/#list]
-                [/@InfoList]
+                <div class="phone_img">
+                    <!--                    <img src="_files/img/index/three.jpg" alt="">-->
+                </div>
             </div>
-            <!-- 如果需要分页器 -->
-            <div class="swiper-pagination phone"></div>
+            [#include 'inc_syfoot.html'/]
         </div>
-        <div class="sousuo">
-            <form action="/site-gsl/search" method="get" target="_blank">
-            <div class="input">
-                <input autocomplete="off" name="q"  type="text" placeholder="热门搜索词：打包带 穿剑式打包机带">
-                <div class="input_img">
-                    <img src="_files/img/ssuo.png" alt="">
+        <!--第三屏-->
+        <div class="swiper-slide two_both">
+            <img data-src="_files/img/4.jpg" src="_files/img/cai.png" alt="">
+            <div class="three_both product container mobile-margin">
+                <!--主体部分-->
+                <div class="three_body">
+                    <div class="two_top am-u-sm-6">
+                        <h4>更多产品</h4>
+                        <h4>MORE PRODUCTS</h4>
+                        <div class="xian"></div>
+                    </div>
+                    <div class="o-m">
+                        <div class="ul-o">
+                            <ul>
+                                [@NodeList parent='product';list]
+                                [#list list as bean]
+                                <li class="li-o"><p class="li_p">${bean.title}</p><div class="clear"></div></li>
+                                [/#list]
+                                [/@NodeList]
+                                <!--                                <div class="li-mask"></div>-->
+                            </ul>
+                        </div>
+                        <div class="ul-t">
+                            <li>
+                                <div class="li-top">
+                                    [@InfoList node='jzq' limit='4';list]
+                                    [#list list as info]
+                                    <a href="${info.url}" class="img_banner">
+                                        <div class="talImg">
+                                            <img data-src="${info.smallImage}" src="_files/img/cai.png" alt="">
+                                        </div>
+                                        <div class="talText">
+                                            <p>${info.title}</p>
+                                            <p>型号：${info.	customs['xinghao']}</p>
+                                        </div>
+                                    </a>
+                                    [/#list]
+                                    [/@InfoList]
+                                </div>
+                            </li>
+                            <li>
+                                <div class="li-top">
+                                    [@InfoList node='ljz' limit='4';list]
+                                    [#list list as info]
+                                    <a href="${info.url}" class="img_banner">
+                                        <div class="talImg">
+                                            <img data-src="${info.smallImage}" src="_files/img/cai.png" alt="">
+                                        </div>
+                                        <div class="talText">
+                                            <p>${info.title}</p>
+                                            <p>型号：${info.	customs['xinghao']}</p>
+                                        </div>
+                                    </a>
+                                    [/#list]
+                                    [/@InfoList]
+                                </div>
+                            </li>
+                            <li>
+                                <div class="li-top">
+                                    [@InfoList node='xdc' limit='4';list]
+                                    [#list list as info]
+                                    <a href="${info.url}" class="img_banner">
+                                        <div class="talImg">
+                                            <img data-src="${info.smallImage}" src="_files/img/cai.png" alt="">
+                                        </div>
+                                        <div class="talText">
+                                            <p>${info.title}</p>
+                                            <p>型号：${info.	customs['xinghao']}</p>
+                                        </div>
+                                    </a>
+                                    [/#list]
+                                    [/@InfoList]
+                                </div>
+                            </li>
+                            <li>
+                                <div class="li-top">
+                                    [@InfoList node='hhs' limit='4';list]
+                                    [#list list as info]
+                                    <a href="${info.url}" class="img_banner">
+                                        <div class="talImg">
+                                            <img data-src="${info.smallImage}" src="_files/img/cai.png" alt="">
+                                        </div>
+                                        <div class="talText">
+                                            <p>${info.title}</p>
+                                            <p>型号：${info.	customs['xinghao']}</p>
+                                        </div>
+                                    </a>
+                                    [/#list]
+                                    [/@InfoList]
+                                </div>
+                            </li>
+                            <li>
+                                <div class="li-top">
+                                    [@InfoList node='dlzc' limit='4';list]
+                                    [#list list as info]
+                                    <a href="${info.url}" class="img_banner">
+                                        <div class="talImg">
+                                            <img data-src="${info.smallImage}" src="_files/img/cai.png" alt="">
+                                        </div>
+                                        <div class="talText">
+                                            <p>${info.title}</p>
+                                            <p>型号：${info.	customs['xinghao']}</p>
+                                        </div>
+                                    </a>
+                                    [/#list]
+                                    [/@InfoList]
+                                </div>
+                            </li>
+                            <li>
+                                <div class="li-top">
+                                    [@InfoList node='ycxs' limit='4';list]
+                                    [#list list as info]
+                                    <a href="${info.url}" class="img_banner">
+                                        <div class="talImg">
+                                            <img data-src="${info.smallImage}" src="_files/img/cai.png" alt="">
+                                        </div>
+                                        <div class="talText">
+                                            <p>${info.title}</p>
+                                            <p>型号：${info.	customs['xinghao']}</p>
+                                        </div>
+                                    </a>
+                                    [/#list]
+                                    [/@InfoList]
+                                </div>
+                            </li>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <!--手机端-->
+                    <div class="three_phone">
+                        <div class="body_bc">
+                            <div class="bc_text">
+                                [@InfoList node='product' isIncludeChildren='true' limit='4';list]
+                                [#list list as info]
+                                <div class="tc_news">
+                                    <a href="${info.url}" class="list_one">
+                                        <div class="list_img">
+                                            <img data-src="${info.smallImage}" src="_files/img/cai.png" alt="">
+                                        </div>
+                                        <div class="list_text">
+                                            <h4>${info.title}</h4>
+                                            <p>型号：${info.fullTitle}</p>
+                                        </div>
+                                    </a>
+                                </div>
+                                [/#list]
+                                [/@InfoList]
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            </form>
-        </div>
-    </div>
-    <!--第二部分-->
-    <div class="index_two">
-        <div class="two_body">
-            <div class="top_left">
-                <h4>关于我们</h4>
-                <div class="xian"></div>
-                <p>ABOUT US</p>
-            </div>
-            <!--主体部分-->
-            <div class="zhuti">
-                <div class="ti_img">
-                    <img src="_files/img/dt.png" alt="">
-                </div>
-                <div class="ti_text">
-                    <p>公司专业生产各种规格、颜色的拉伸缠绕膜、分切缠绕莫、保护膜、塑钢缠绕膜、各种规格EPE珍珠棉卷材、板材、护角、定型减震包装、打包带、塑钢打包带、气泡膜、低中高粘保护膜、热收缩膜、保鲜膜、胶带、珍珠棉保温胶条、隔音（声）片、阻尼膜、牧草膜、吹膜、制袋等各种塑料制品。2009年我们研发的新型的塑钢型缠绕膜，极大的降底了企业的包装成本和工人的劳动强度，省时、省力、更省钱。 公司在2010年新上了大型的全自动生产线，同时拥有多条生产线及优质的生产设备和精湛的技术...</p>
-                    [@Node number='about';bean]
-                    <a href="${bean.url}">查看更多</a>
+                <div class="buttom_more">
+                    [@Node number='product';bean]
+                    <a href="${bean.url}" class="more">更多产品</a>
                     [/@Node]
                 </div>
             </div>
+            [#include 'inc_syfoot.html'/]
         </div>
-    </div>
-    <!--第三部分-->
-    <div class="three_both">
-        <div class="top_left">
-            <h4>产品中心</h4>
-            <div class="xian"></div>
-            <p>PRODUCT CENTER</p>
-        </div>
-        <!--pc端-->
-        <div class="three_body">
-            <div class="nei-container">
-                <div class="swiper-wrapper">
-                    [@InfoList node='anli' isIncludeChildren='true' ;list]
-                    [#list list as info]
-                    <a href="${info.url}" class="swiper-slide list_one">
-                        <div class="list_img">
-                            <img src="${info.smallImage}" alt="">
+        <!--第四屏-->
+        <div class="swiper-slide four_both">
+            <img data-src="_files/img/3.jpg" src="_files/img/cai.png" alt="">
+            <div class="four_body">
+                <div class="two_top am-u-sm-6">
+                    <h4>新闻中心</h4>
+                    <h4>NEWS CENTER</h4>
+                    <div class="xian"></div>
+                </div>
+                <div class="four_bottom">
+                    <div class="four_img">
+                        [@InfoList node='news' limit='1';list]
+                        [#list list as info]
+                        <div class="img_nei">
+                            <img data-src="${info.smallImage}" src="_files/img/cai.png" alt="">
                         </div>
-                        <div class="list_text">
-                            <h4>${info.title}</h4>
-                        </div>
-                    </a>
+                        [/#list]
+                        [/@InfoList]
+                    </div>
+                    <div class="bottom_right">
+                        [@InfoList node='news' limit='5';infos]
+                        [#list infos as bean]
+                        <a href="${bean.url}" class="right_text">
+                            <div class="text_top">
+                                <h4>${bean.metaDescription}</h4>
+                                <span>${bean.publishDate?string('YYYY/MM/dd')}</span>
+                            </div>
+                            <div class="text_bottom">
+                                <!--                                <span>${bean.metaDescription}</span>-->
+
+                            </div>
+                        </a>
+                        [/#list]
+                        [/@InfoList]
+                    </div>
+                </div>
+                <!--手机new-->
+                <div class="phone_new">
+                    [@InfoList node='news' limit='4';infos]
+                    [#list infos as bean]
+                    <div class="tc_news">
+                        <a href="${bean.url}" class="text_left">
+                            <h4>${bean.metaDescription}</h4>
+                            <div class="text_bottom">
+                                <p>${bean.publishDate?string('YYYY/MM/dd')}</p>
+                                <p>点击查看</p>
+                            </div>
+                        </a>
+                    </div>
                     [/#list]
                     [/@InfoList]
                 </div>
             </div>
-            <div class="swiper-button-prev"></div><!--左箭头。如果放置在swiper-container外面
-，需要自定义样式。-->
-            <div class="swiper-button-next"></div><!--右箭头。如果放置在swiper-container外面
-，需要自定义样式。-->
-        </div>
-        <div class="more">
-            [@Node number='anli';bean]
-            <a href="${bean.url}">更多产品</a>
-            [/@Node]
-        </div>
-        <!--手机端-->
-        <div class="phone_body">
-            <div class="list_body">
-                [@InfoList node='anli' isIncludeChildren='true' limit='4';list]
-                [#list list as info]
-                <a href="${info.url}" class="list_one">
-                    <div class="list_img">
-                        <img src="${info.smallImage}" alt="">
-                    </div>
-                    <div class="list_text">
-                        <h4>${info.title}</h4>
-                    </div>
-                </a>
-                [/#list]
-                [/@InfoList]
+            <div class="buttom_more">
+                [@Node number='product';bean]
+                <a href="${bean.url}" class="more">更多产品</a>
+                [/@Node]
             </div>
+            [#include 'inc_syfoot.html'/]
         </div>
-    </div>
-    <!--第四部分-->
-    <div class="index_four">
-        <img src="_files/img/bannerl2.png" alt="">
-    </div>
-    <!--第五部分-->
-    <div class="index_five">
-        <div class="five_both">
-            <div class="top_left">
-                <h4>新闻中心</h4>
-                <div class="xian"></div>
-                <p>NEWS CENTER</p>
-            </div>
-            <div class="five_body">
-                [@InfoList node='news' limit='1';list]
-                [#list list as info]
-                <a href="${info.url}" class="body_left">
-                    <div class="five_img">
-                        <img src="${info.smallImage}" alt="">
-                    </div>
-                    <div class="five_text">
-                        <div class="text_time">
-                            <h4>${info.title}</h4>
-                            <span>${info.publishDate?string('YYYY/MM/dd')}</span>
-                        </div>
-                        <span class="text_span">[#noescape]${info.text}[/#noescape]</span>
-                    </div>
-                </a>
-                [/#list]
-                [/@InfoList]
-                <!--新闻左边部分-->
-                <div class="five_right">
-                    [@InfoList node='news' limit='4';list]
-                    [#list list as info]
-                    <a href="${info.url}" class="right_one">
-                        <div class="one_time">
-                            <p>${info.publishDate?string('dd')}</p>
-                            <p>${info.publishDate?string('YYYY/MM')}</p>
-                        </div>
-                        <div class="one_text">
-                            <h4>${info.title}</h4>
-                            <span>[#noescape]${info.text}[/#noescape]</span>
-                        </div>
-                    </a>
-                    [/#list]
-                    [/@InfoList]
+        <!--第五屏-->
+        <div class="swiper-slide five_both">
+            <img data-src="_files/img/5.jpg" src="_files/img/cai.png" alt="">
+            <div class="five-bottom">
+                <div class="two_top am-u-sm-6">
+                    <h4>联系我们</h4>
+                    <h4>CONTACT US</h4>
+                    <div class="xian"></div>
                 </div>
-            </div>
-        </div>
-    </div>
-    <!--第六部分-->
-    <div class="index_six">
-        <div class="six_both">
-            <div class="top_left">
-                <h4>联系我们</h4>
-                <div class="xian"></div>
-                <p>CONTACT US</p>
-            </div>
-            <!--主体部分-->
-            <div class="six_body">
-                <div class="phone_input">
-                    <h4>留下您的联系方式我们的工作人员将在随后跟您联系</h4>
-                    <form id="guestbookForm_phone" action="${ctx}/guestbook2/create2" method="post" class="pc_form">
-                        <input type="hidden" name="status_0" value="留言成功！"/>
-                        <input type="hidden" name="status_1" value="留言成功，请等待管理员审核！"/>
-                        <input type="hidden" name="siteNumber" value="jxkj"/>
-                        <input type="hidden" name="typeId" value="355"/>
-                        <input type="hidden"  autocomplete="off" name="nextUrl" value="${ctx}/"/>
-                        <div class="pc_first">
-                            <div class="us_name">
-                                <div class="input_name">
-                                    <input type="text"  autocomplete="off" id="name" name="username" placeholder="姓名">
-                                </div>
-                                <div class="input_name">
-                                    <input type="text"  autocomplete="off" id="phone" name="phone" placeholder="电话">
-                                </div>
-                                <div class="input_name">
-                                    <input type="text"  autocomplete="off" id="email" name="phone" placeholder="邮箱">
-                                </div>
-                                <div class="input_name">
-                                    <input type="text"  autocomplete="off" id="text" name="phone" placeholder="您的详细需求">
+                <div class="news_list">
+                    <div class="lx_right">
+                        <!--城市办事处-->
+                        <div class="lx_body">
+                            <div class="body_both">
+                                <form id="guestbookForm_pc" action="${ctx}/guestbook2/create2" method="post" class="pc_form">
+                                    <input type="hidden" name="status_0" value="留言成功！"/>
+                                    <input type="hidden" name="status_1" value="留言成功，请等待管理员审核！"/>
+                                    <input type="hidden" name="siteNumber" value="jxkj"/>
+                                    <input type="hidden" name="typeId" value="355"/>
+                                    <input type="hidden"  autocomplete="off" name="nextUrl" value="${ctx}/"/>
+                                    <div class="pc_first">
+                                        <div class="us_name">
+                                            <div class="input_name">
+                                                <input type="text"  autocomplete="off" id="name" name="username" placeholder="姓名">
+                                            </div>
+                                            <div class="input_name">
+                                                <input type="text"  autocomplete="off" id="phone" name="phone" placeholder="电话">
+                                            </div>
+                                            <div class="input_name">
+                                                <textarea id="text" name="text" cols="47" rows="10" placeholder="写下你想要说的话" autocomplete="off"></textarea>
+                                            </div>
+                                        </div>
+                                        <button id="checkPhone" onClick='javascript:return checkPhone(0);'>提交</button>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="us_bottom">
+                                <div id="container"></div>
+                            </div>
+                        </div>
+                        <div class="map">
+                            <div class="ban_test">
+                                <div class="left_top">
+                                    <div class="tel">
+                                        <img data-src="${site.customs['wx_ewm']}" src="_files/img/cai.png" alt="">
+                                        <div class="tel_fen">
+                                            <a href="tel:${site.customs['dh']}">
+                                                <h4>联系电话</h4>
+                                                <p>${(site.customs['dh'])!'待补充'}</p>
+                                                <h4>公司地址</h4>
+                                                <p>${(site.customs['gs_stress'])!'待补充'}</p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="tel">
+                                        <h4>公司邮箱</h4>
+                                        <p>
+                                            ${(site.customs['email'])!'待补充'}
+                                        </p>
+                                        <h4>工厂地址</h4>
+                                        <p>
+                                            ${(site.customs['lclx'])!'待补充'}
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
-                            <button id="checkPhone" onClick='javascript:return checkPhone(0);'>发送</button>
                         </div>
-                    </form>
-                </div>
-                <div class="map">
-                    <div id="container"></div>
-                </div>
-                <div class="six_input">
-                    <h4>留下您的联系方式我们的工作人员将在随后跟您联系</h4>
-                    <form id="guestbookForm_pc" action="${ctx}/guestbook2/create2" method="post" class="pc_form">
-                        <input type="hidden" name="status_0" value="留言成功！"/>
-                        <input type="hidden" name="status_1" value="留言成功，请等待管理员审核！"/>
-                        <input type="hidden" name="siteNumber" value="jxkj"/>
-                        <input type="hidden" name="typeId" value="355"/>
-                        <input type="hidden"  autocomplete="off" name="nextUrl" value="${ctx}/"/>
-                        <div class="pc_first">
-                            <div class="us_name">
-                                <div class="input_name">
-                                    <input type="text"  autocomplete="off" id="name" name="username" placeholder="姓名">
-                                </div>
-                                <div class="input_name">
-                                    <input type="text"  autocomplete="off" id="phone" name="phone" placeholder="电话">
-                                </div>
-                                <div class="input_name">
-                                    <input type="text"  autocomplete="off" id="email" name="phone" placeholder="邮箱">
-                                </div>
-                                <div class="input_name">
-                                    <input type="text"  autocomplete="off" id="text" name="phone" placeholder="您的详细需求">
-                                </div>
-                            </div>
-                            <button id="checkPhone" onClick='javascript:return checkPhone(0);'>发送</button>
-                        </div>
-                    </form>
+                    </div>
                 </div>
             </div>
+            [#include 'inc_syfoot.html'/]
         </div>
     </div>
+
+
+    <!-- 如果需要分页器 -->
+    <div class="swiper-pagination"></div>
 </div>
-<!--pc端底部-->
-<div class="footer">
-    [#include 'footer.html'/]
-</div>
-<!--phone_底部-->
+<!--<div class="footer">-->
+<!--    [#include 'footer.html'/]-->
+<!--</div>-->
+<!--手机底部-->
 <div class="phone_footer">
-    [#include 'nav_footer.html'/]
+    [#include 'phone_footer.html'/]
 </div>
-<link rel="stylesheet" href="_files/js/animate.min.css">
-<script src="_files/js/swiper.min.js"></script>
-<script src="_files/js/swiper.animate.min.js"></script>
-<link rel="stylesheet" href="_files/js/swiper.min.css">
-<script src="_files/js/jquery.min.js"></script>
+[#include 'inc_js.html'/]
 <script>
-    var myswiperpc = new Swiper('.pc-container', {   //55555555
-        scrollbar: '.swiper-scrollbar',
-        autoplay: {
-            delay: 3000,
-            stopOnLastSlide: false,
-            disableOnInteraction: true,
+    // onload是等所有的资源文件加载完毕以后再绑定事件
+    window.onload = function(){
+        // 获取图片列表，即img标签列表
+        var imgs = document.querySelectorAll('img');
 
-        },
-        loop: true,
-        pagination: {
-            el: '.banner'
-        },
-    });
-
-    var myswiperPhone = new Swiper('.phone-container', {   //55555555
-        scrollbar: '.swiper-scrollbar',
-        autoplay: {
-            delay: 3000,
-            stopOnLastSlide: false,
-            disableOnInteraction: true,
-        },
-
-        pagination: {
-            el: '.phone'
-        },
-        loop: true,
-    });
-    var mySwipernei = new Swiper('.nei-container', {
-        slidesPerView: 3,
-        spaceBetween: 30,
-        loop: true,
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-        },
-        loop: true,
-    });
-    $("#checkPhone").click(function () {
-
-        var username=$("#name").val();
-        var email = $("#email").val();
-        var tel=$("#phone").val();
-        if (username == ""){
-            alert("请输入您的姓名，方便联系");
-            return false;
+        // 获取到浏览器顶部的距离
+        function getTop(e){
+            return e.offsetTop;
         }
-        if (tel == ""){
-            alert("请输入您的电话，方便联系");
-            return false;
-        }else if(tel !=""){
-            var meg= /^1[3|5|6|7|8|9][0-9]{9}$/;
-            isok =meg.test(tel);
-            if(!isok){
-                alert("手机格式不正确，请重新输入");
-                return false;
+
+        // 懒加载实现
+        function lazyload(imgs){
+            // 可视区域高度
+            var h = window.innerHeight;
+            //滚动区域高度
+            var s = document.documentElement.scrollTop || document.body.scrollTop;
+            for(var i=0;i<imgs.length;i++){
+                //图片距离顶部的距离大于可视区域和滚动区域之和时懒加载
+                if ((h+s)>getTop(imgs[i])) {
+                    // 真实情况是页面开始有2秒空白，所以使用setTimeout定时2s
+                    (function(i){
+                        setTimeout(function(){
+                            // 不加立即执行函数i会等于9
+                            // 隐形加载图片或其他资源，
+                            //创建一个临时图片，这个图片在内存中不会到页面上去。实现隐形加载
+                            var temp = new Image();
+                            temp.src = imgs[i].getAttribute('data-src');//只会请求一次
+                            // onload判断图片加载完毕，真是图片加载完毕，再赋值给dom节点
+                            temp.onload = function(){
+                                // 获取自定义属性data-src，用真图片替换假图片
+                                imgs[i].src = imgs[i].getAttribute('data-src')
+                            }
+                        },2000)
+                    })(i)
+                }
             }
-        };
-        if(test == ""){
-            alert("请输入您的需求");
-            return false;
         }
-        return true;
-    })
+        lazyload(imgs);
 
+        // 滚屏函数
+        window.onscroll =function(){
+            lazyload(imgs);
+        }
+    }
     //创建和初始化地图函数：
     function initMap(){
         createMap();//创建地图
@@ -359,10 +499,13 @@
 
     //创建地图函数：
     function createMap(){
-        var map = new BMap.Map("container");//在百度地图容器中创建一个地图
-        var point = new BMap.Point(113.620642,34.727628);//定义一个中心点坐标
-        map.centerAndZoom(point,14);//设定地图的中心点和坐标并将地图显示在地图容器中
+        var map = new BMap.Map("container");
+        var point = new BMap.Point(113.620642,34.727628);
+        map.centerAndZoom(point, 16);
+        var marker = new BMap.Marker(point);        // 创建标注
+        // 将标注添加到地图中
         window.map = map;//将map变量存储在全局
+
     }
 
     //地图事件设置函数：
@@ -387,7 +530,7 @@
     }
 
     //标注点数组
-    var markerArr = [{title:"PPE打包带",content:"郑州市中原区创客大厦",point:"113.620642|34.727628",isOpen:0,icon:{w:21,h:21,l:0,t:0,x:6,lb:5}}
+    var markerArr = [{title:"汽车配件",content:"郑州市中原区创客大厦",point:"113.620642|34.727628",isOpen:0,icon:{w:21,h:21,l:0,t:0,x:6,lb:5}}
     ];
     //创建marker
     function addMarker(){
@@ -444,6 +587,70 @@
     }
 
     initMap();//创建和初始化地图
+    var linumber = $('.o-m .ul-o li')
+    linumber.eq(0).addClass('onchangehhhhh')
+    linumber.hover(function () {
+        $(this).addClass('onchangehhhhh')
+        $(this).siblings().removeClass('onchangehhhhh')
+
+        var linum = $(this).index()
+        $('.o-m .ul-t li').eq(linum).stop().show().siblings().hide()
+    })
+
+    $(".top_right ul li a").each(function () {
+        if ($(this)[0].href == String(window.location)) {
+            $(this).addClass("action").siblings().removeClass("action");
+        }
+    });
+    var mySwipernei = new Swiper('.nei-container', {
+        slidesPerView: 3,
+        spaceBetween: 30,
+        loop: true,
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        loop: true,
+    });
+    var mySwiper = new Swiper('.swiper-container', {
+        direction: 'vertical', // 垂直切换选项
+        mousewheel: true,
+        initialSlide: $("#initSet").val(),
+        // 如果需要分页器
+        pagination: {
+            el: '.swiper-pagination',
+        },
+    })
+
+
+    var myswiperpc = new Swiper('.pc-container', {   //55555555
+        scrollbar: '.swiper-scrollbar',
+        autoplay: {
+            delay: 3000,
+            stopOnLastSlide: false,
+            disableOnInteraction: true,
+
+        },
+        loop: true,
+        pagination: {
+            el: '.banner'
+        },
+    });
+
+    var myswiperPhone = new Swiper('.phone-container', {   //55555555
+        scrollbar: '.swiper-scrollbar',
+        autoplay: {
+            // delay:3000,
+            stopOnLastSlide: false,
+            disableOnInteraction: true,
+        },
+
+        pagination: {
+            el: '.phone'
+        },
+        loop: true,
+    });
+
 </script>
 </body>
 </html>
